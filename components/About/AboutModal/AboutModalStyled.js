@@ -18,6 +18,9 @@ export const ModalContainer = styled.div`
   @media (min-width: 1001px) {
     display: none;
   }
+  @media (max-height: 44rem) {
+    height: 100vh;
+  }
 `;
 
 export const ModalTitle = styled.h2`
