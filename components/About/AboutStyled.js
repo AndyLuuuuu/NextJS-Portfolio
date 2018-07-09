@@ -57,7 +57,8 @@ export const AboutBox = styled.div`
   flex-flow: column;
   align-content: center;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 1rem;
   transition: all 150ms ease-in-out;
   &:hover {
     transform: scale(1.05);
