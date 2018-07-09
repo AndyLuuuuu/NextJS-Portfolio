@@ -51,15 +51,6 @@ export const ModalTitleLink = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 1rem;
-  @media (max-height: 44rem) {
-    width: 70%;
-  }
-  @media (max-height: 30rem) {
-    width: 60%;
-  }
-  @media (max-height: 25rem) {
-    width: 50%;
-  }
 `;
 
 export const ModalLinkDiv = styled.div`
@@ -83,17 +74,6 @@ export const ModalText = styled.p`
   width: 95%;
   color: white;
   margin-bottom: 1.5rem;
-  @media (max-height: 44rem) {
-    width: 70%;
-  }
-  @media (max-height: 30rem) {
-    width: 60%;
-    font-size: 0.8rem;
-  }
-  @media (max-height: 25rem) {
-    width: 100%;
-    font-size: 0.8rem;
-  }
 `;
 
 export const CloseButton = styled.button`

@@ -30,7 +30,6 @@ const PortfolioModal = props => {
           </a>
         </ModalLinkDiv>
       </ModalTitleLink>
-
       <ModalText>{props.ModalItem.ProjectText}</ModalText>
       <CloseButton onClick={props.closeModal}>Close</CloseButton>
     </ModalContainer>
