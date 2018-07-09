@@ -25,7 +25,6 @@ injectGlobal`
   text-align: center;
   transition: all 350ms ease-in-out;
   &::before, &::after {
-  font-family: FontAwesome;
   display: block;
   top: 0;
   left: 0;

@@ -130,7 +130,7 @@ class About extends Component {
               <br />I am a student at Kwantlen Polytechnic University studying a
               degree in Information Technology (With specialization in mobile
               and web applications). With this degree, I wish to have a
-              successful career within the tech industry.
+              fulfilling career within the tech industry.
             </ExpandText>
           </AboutExpand>
           <SkillsExpand show={this.state.ExpandSkills}>
@@ -147,38 +147,39 @@ class About extends Component {
               My interest in web development started when I took a course at my
               university. From then on, I've learned a lot from online materials
               such as Udemy and tutorials on YouTube. <br />
-              <br />I know HTML, CSS, MondoDB, NodeJS (Express) and a very big
-              fan of ReactJS. I mostly develop using ReactJS because of how
-              versatile it is. I am continously learning new tips and tricks in
-              achieving better code and better ways of tackling problems. <br />
+              <br />I've worked with HTML, CSS, MongoDB, NodeJS (Express) and a
+              very big fan of ReactJS. I mostly develop using ReactJS because of
+              how versatile it is. I am continously learning new tips and tricks
+              in achieving better code and better ways of tackling problems.{" "}
+              <br />
               <br />I have also picked up web design to further grasp my
               understanding on how to create a better UI/UX experience for
               clients.
             </ExpandText>
           </SkillsExpand>
           <AboutModal title="Who am I?" expanded={this.state.ExpandAbout} left>
-            My name is Andy and I currently live in Vancouver, Canada. I moved
-            to Vancouver, B.C. when I was 6 years old with my siblings and
+            <br />My name is Andy and I currently live in Vancouver, Canada. I
+            moved to Vancouver, B.C. when I was 6 years old with my siblings and
             mother. I've lived in Vancouver for over 20 years and consider this
             beautiful place as my home. <br />
             <br />I am a student at Kwantlen Polytechnic University studying a
             degree in Information Technology (With specialization in mobile and
-            web applications). While Information Technology was not my major
-            when I first started in Kwantlen, I've always been fond of
-            technology. However, my curiousity in different subjects drove me to
-            try stuff out.
+            web applications). With this degree, I wish to have a fulfilling
+            career within the tech industry.
           </AboutModal>
           <AboutModal
             title="What can I do?"
             expanded={this.state.ExpandSkills}
             gold
           >
+            <br />
             My interest in web development started when I took a course at my
             university. From then on, I've learned a lot from online materials
             such as Udemy and tutorials on YouTube. <br />
-            <br />I know HTML, CSS, MondoDB, NodeJS (Express) and a very big fan
-            of ReactJS. I mostly develop using ReactJS because of how versatile
-            it is. I am continously learning new tips and tricks in achieving
+            <br />I've worked with HTML, CSS, MongoDB, NodeJS (Express) and a
+            very big fan of ReactJS. I mostly develop using ReactJS because of
+            how versatile it is.<br />
+            <br />I am continously learning new tips and tricks in achieving
             better code and better ways of tackling problems. <br />
             <br />I have also picked up web design to further grasp my
             understanding on how to create a better UI/UX experience for

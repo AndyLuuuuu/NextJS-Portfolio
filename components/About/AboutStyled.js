@@ -69,6 +69,7 @@ export const AboutBox = styled.div`
     height: 7rem;
     margin-top: 1rem;
     position: relative;
+    justify-content: center;
     &:hover {
       transform: none;
       box-shadow: none;

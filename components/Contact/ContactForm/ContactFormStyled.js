@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FormContainer = styled.div`
   background-color: ${props => props.theme.black};
   grid-area: 1/2/3/3;
-  padding: 1.5rem 5rem;
+  padding: 1rem 5rem;
   transition: all 400ms ease-in-out;
   transform: rotateY(${props => (props.flipped ? "-180deg" : "0deg")})
     translateZ(${props => (props.flipped ? "1px" : "0deg")});
@@ -22,12 +22,6 @@ export const FormContainer = styled.div`
   @media (max-width: 37rem) {
     padding: 1.5rem 0;
   }
-`;
-
-export const FormInstruction = styled.p`
-  text-align: center;
-  width: 10rem;
-  margin: 0 auto;
 `;
 
 export const FormContent = styled.form`
@@ -133,7 +127,7 @@ export const FormInput = styled.input.attrs({
 
 export const FormTextArea = styled.textarea`
   resize: none;
-  height: 8rem;
+  height: 10rem;
   padding: 0.5rem 0 0 0.5rem;
   background-color: transparent;
   border: 2px solid grey;
@@ -190,14 +184,14 @@ export const FormButton = styled.button`
   font-size: 1.3rem;
   font-weight: 700;
   width: fit-content;
-  padding: 0.8rem 3rem;
+  height: 5%;
+  padding: 1rem 3rem;
   border: none;
   align-self: center;
-  color: ${props => props.theme.black};
-  background-color: ${props => props.theme.gold};
+  color: ${props => props.theme.gold};
+  background-color: transparent;
   transition: all 200ms ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.darkGold};
     border-radius: 15px;
   }
   &:focus {

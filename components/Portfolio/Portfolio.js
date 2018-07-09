@@ -9,7 +9,6 @@ import {
   ScrollInstruction
 } from "./PortfolioStyled";
 import WebPortfolioContent from "./PortfolioItems/Web Portfolio/WebPortfolio";
-import ArrowIcon from "../../static/icons/arrow-icon.svg";
 
 class Portfolio extends Component {
   state = {
@@ -18,7 +17,7 @@ class Portfolio extends Component {
 
   onFlipHandler = event => {
     switch (event.target.title) {
-      case "View Button":
+      case "View":
         this.setState(prevState => ({
           WebPortFlipped: true
         }));
@@ -49,11 +48,15 @@ class Portfolio extends Component {
         onClick={event => this.onFlipHandler(event)}
       >
         <Content title="Container" onClick={event => this.onFlipHandler(event)}>
-          <WebPortfolio flipped={this.state.WebPortFlipped}>
+          <WebPortfolio
+            title="View"
+            flipped={this.state.WebPortFlipped}
+            onClick={event => this.onFlipHandler(event)}
+          >
             <Title>Web Development</Title>
             <Subtitle>Portfolio</Subtitle>
             <ScrollInstruction
-              title="View Button"
+              title="View"
               onClick={event => this.onFlipHandler(event)}
             >
               Click to view
@@ -62,7 +65,7 @@ class Portfolio extends Component {
           <WebPortBack flipped={this.state.WebPortFlipped}>
             <WebPortfolioContent
               WebPortfolioData={this.props.WebPortfolioData}
-              CloseButton={event => this.onFlipHandler(event)}
+              CloseButton={this.onFlipHandler}
               SelectedItem={() => {}}
             />
           </WebPortBack>
