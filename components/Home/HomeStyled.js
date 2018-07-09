@@ -88,8 +88,8 @@ export const ScrollContainer = styled.div`
     animation: ${pulse} 750ms linear infinite;
     animation-direction: alternate-reverse;
   }
-  @media (max-height: 44rem) {
-    bottom: 0.5%;
+  @media (max-height: 25rem) {
+    display: none;
   }
 `;
 
