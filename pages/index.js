@@ -39,7 +39,7 @@ const index = props => {
 
 index.getInitialProps = async function() {
   const res = await axios.get(
-    "https://andyluuuuu-portfolio.herokuapp.com/api/webportfolio"
+    "https://andylu-portfolio.herokuapp.com/api/webportfolio"
   );
   return {
     WebPortfolioData: res.data
