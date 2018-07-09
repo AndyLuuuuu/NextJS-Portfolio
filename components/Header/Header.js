@@ -10,12 +10,14 @@ class Header extends Component {
 
   onMenuClick = () => {
     this.setState({ showMenu: !this.state.showMenu });
-    console.log("working");
   };
   render() {
     return (
       <HeaderContainer>
-        <LogoImage src={LogoSrc} />
+        <LogoImage
+          src={LogoSrc}
+          onClick={() => Home.scrollIntoView({ behavior: "smooth" })}
+        />
         <Menu showMenu={this.state.showMenu} clicked={this.onMenuClick} />
       </HeaderContainer>
     );

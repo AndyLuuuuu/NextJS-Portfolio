@@ -10,7 +10,7 @@ export const ModalContainer = styled.div`
   color: ${props => props.theme.black};
   display: flex;
   flex-flow: column;
-  padding: 1rem 4rem;
+  padding: 0 4rem;
   justify-content: center;
   transition: transform 250ms ease-in-out;
   transform-origin: ${props => (props.left ? "left" : "right")};
@@ -31,6 +31,12 @@ export const ModalTitle = styled.h2`
   @media (max-width: 23rem) {
     font-size: 1.5rem;
   }
+  @media (max-height: 44rem) {
+    font-size: 1.4rem;
+  }
+  @media (max-height: 37.5rem) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const ModalText = styled.p`
@@ -49,5 +55,35 @@ export const ModalText = styled.p`
   }
   @media (max-width: 23rem) {
     font-size: 1rem;
+  }
+  @media (max-height: 44rem) {
+    font-size: 1.5rem;
+  }
+  @media (max-height: 37.5rem) {
+    font-size: 1.1rem;
+  }
+  @media (max-height: 25rem) {
+    font-size: 0.9rem;
+  }
+`;
+
+export const CloseModal = styled.p`
+  color: ${props => props.theme.black};
+  position: absolute;
+  bottom: 2%;
+  width: fit-content;
+  text-align: center;
+  font-size: 1.1rem;
+  left: 0;
+  right: 0;
+  margin: 1rem auto 0 auto;
+  @media (max-height: 44rem) {
+    font-size: 1rem;
+  }
+  @media (max-height: 37.5rem) {
+    font-size: 0.8rem;
+  }
+  @media (max-height: 25rem) {
+    font-size: 0.75rem;
   }
 `;

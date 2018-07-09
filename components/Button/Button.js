@@ -4,12 +4,7 @@ import CloseBtnIcon from "../../static/icons/button.svg";
 
 const CloseBtn = props => {
   return (
-    <CloseButton
-      size={props.size}
-      src={CloseBtnIcon}
-      title="Close Button"
-      onClick={event => props.CloseButton(event)}
-    />
+    <CloseButton size={props.size} src={CloseBtnIcon} title="Close Button" />
   );
 };
 

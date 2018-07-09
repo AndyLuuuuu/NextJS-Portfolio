@@ -23,7 +23,7 @@ import {
 import AboutModal from "./AboutModal/AboutModal";
 import ProfileImage from "../../static/images/about/About-Image.jpg";
 import arrowIcon from "../../static/icons/arrow-icon.svg";
-
+import CloseButton from "../Button/Button";
 import axios from "axios";
 
 class About extends Component {
@@ -50,6 +50,12 @@ class About extends Component {
         this.setState(prevState => ({
           ExpandAbout: false,
           ExpandSkills: !this.state.ExpandSkills
+        }));
+        break;
+      case "Close Button":
+        this.setState(prevState => ({
+          ExpandAbout: false,
+          ExpandSkills: false
         }));
         break;
       default:
@@ -120,6 +126,10 @@ class About extends Component {
             </CTABtn>
           </CTABox>
           <AboutExpand show={this.state.ExpandAbout}>
+            <CloseButton
+              size="2rem"
+              onClick={event => this.ExpandHandler(event)}
+            />
             <ExpandTitle show={this.state.ExpandAbout}>Who am I?</ExpandTitle>
             <StyledHr show={this.state.ExpandAbout} />
             <ExpandText show={this.state.ExpandAbout}>
@@ -134,6 +144,10 @@ class About extends Component {
             </ExpandText>
           </AboutExpand>
           <SkillsExpand show={this.state.ExpandSkills}>
+            <CloseButton
+              size="2rem"
+              onClick={event => this.ExpandHandler(event)}
+            />
             <ExpandTitle show={this.state.ExpandSkills}>
               What can I do?
             </ExpandTitle>

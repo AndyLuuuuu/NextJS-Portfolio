@@ -15,7 +15,7 @@ injectGlobal`
     padding: 0;
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
-    
+}
 }
   body {
     overflow-x: hidden;

@@ -16,26 +16,34 @@ export const ModalContainer = styled.div`
   top: 0;
   bottom: 0;
   z-index: 50;
-  @media (max-width: 62.6rem) {
-  }
-  @media (max-width: 55rem) {
-  }
-  @media (max-width: 43rem) {
-  }
-  @media (max-width: 37rem) {
-  }
-  @media (max-width: 31rem) {
-  }
 `;
 
 export const ModalImageCrop = styled.div`
   max-height: 30rem;
   overflow: hidden;
   text-align: center;
+  @media (max-height: 44rem) {
+    max-height: 20rem;
+  }
+  @media (max-height: 30rem) {
+    max-height: 15rem;
+  }
+  @media (max-height: 25rem) {
+    max-height: 10rem;
+  }
 `;
 
 export const ModalImage = styled.img`
   width: 95%;
+  @media (max-height: 44rem) {
+    width: 70%;
+  }
+  @media (max-height: 30rem) {
+    width: 60%;
+  }
+  @media (max-height: 25rem) {
+    width: 50%;
+  }
 `;
 
 export const ModalTitleLink = styled.div`
@@ -43,6 +51,15 @@ export const ModalTitleLink = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 1rem;
+  @media (max-height: 44rem) {
+    width: 70%;
+  }
+  @media (max-height: 30rem) {
+    width: 60%;
+  }
+  @media (max-height: 25rem) {
+    width: 50%;
+  }
 `;
 
 export const ModalLinkDiv = styled.div`
@@ -66,6 +83,17 @@ export const ModalText = styled.p`
   width: 95%;
   color: white;
   margin-bottom: 1.5rem;
+  @media (max-height: 44rem) {
+    width: 70%;
+  }
+  @media (max-height: 30rem) {
+    width: 60%;
+    font-size: 0.8rem;
+  }
+  @media (max-height: 25rem) {
+    width: 100%;
+    font-size: 0.8rem;
+  }
 `;
 
 export const CloseButton = styled.button`

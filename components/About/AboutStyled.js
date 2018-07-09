@@ -47,6 +47,15 @@ export const AboutImage = styled.img`
   @media (max-width: 44rem) {
     width: 70%;
   }
+  @media (max-height: 44rem) {
+    width: 50%;
+  }
+  @media (max-height: 30rem) {
+    width: 40%;
+  }
+  @media (max-height: 25rem) {
+    width: 30%;
+  }
 `;
 
 export const AboutBox = styled.div`
@@ -79,6 +88,16 @@ export const AboutBox = styled.div`
     width: 70%;
     height: 5rem;
   }
+  @media (max-height: 44rem) {
+    width: 50%;
+    height: 3rem;
+  }
+  @media (max-height: 30rem) {
+    width: 40%;
+  }
+  @media (max-height: 25rem) {
+    width: 30%;
+  }
 `;
 
 export const AboutTitle = styled.h2`
@@ -99,7 +118,8 @@ export const AboutTitle = styled.h2`
   @media (max-width: 44rem) {
     font-size: 1.7rem;
   }
-  @media (max-width: 31rem) {
+  @media (max-height: 44rem) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -114,6 +134,10 @@ export const ArrowIcon = styled.img`
   }
   @media (max-width: 31rem) {
     height: 1.5rem;
+    width: auto;
+  }
+  @media (max-height: 44rem) {
+    height: 1.2rem;
     width: auto;
   }
 `;

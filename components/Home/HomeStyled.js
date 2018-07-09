@@ -102,6 +102,15 @@ export const ScrollInstruction = styled.p`
   @media (max-width: 37.5rem) {
     font-size: 1.2rem;
   }
+  @media (max-height: 44rem) {
+    font-size: 1.5rem;
+  }
+  @media (max-height: 37.5rem) {
+    font-size: 1.1rem;
+  }
+  @media (max-height: 25rem) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const ScrollInstructionArrow = styled.img`
@@ -110,5 +119,17 @@ export const ScrollInstructionArrow = styled.img`
   @media (max-width: 37.5rem) {
     width: 2rem;
     height: 2rem;
+  }
+  @media (max-height: 44rem) {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  @media (max-height: 37.5rem) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (max-height: 25rem) {
+    width: 1.3rem;
+    height: 1.3rem;
   }
 `;

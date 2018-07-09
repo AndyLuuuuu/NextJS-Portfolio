@@ -1,5 +1,10 @@
 import React from "react";
-import { ModalContainer, ModalTitle, ModalText } from "./AboutModalStyled";
+import {
+  ModalContainer,
+  ModalTitle,
+  ModalText,
+  CloseModal
+} from "./AboutModalStyled";
 
 const AboutModal = props => {
   return (
@@ -10,6 +15,7 @@ const AboutModal = props => {
     >
       <ModalTitle>{props.title}</ModalTitle>
       <ModalText>{props.children}</ModalText>
+      <CloseModal>Click to close.</CloseModal>
     </ModalContainer>
   );
 };
