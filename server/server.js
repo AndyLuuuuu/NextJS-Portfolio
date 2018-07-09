@@ -1,5 +1,6 @@
 const express = require("express");
 const next = require("next");
+const LRUCache = require("lru-cache");
 const mongoose = require("mongoose");
 const WebPortfolioSchema = require("./schema/WebPortfolioSchema");
 
@@ -10,6 +11,11 @@ const handle = app.getRequestHandler();
 
 //DB Config
 const db = require("./config/keys").mongoURI;
+
+const ssrCache = new LRUCache({
+  max: 100,
+  maxAge: 1000 * 60 * 60 // 1hour
+});
 
 app.prepare().then(() => {
   const server = express();
@@ -27,16 +33,6 @@ app.prepare().then(() => {
     WebPortfolioSchema
   );
 
-  const NewWebProject = new WebPortfolioItem({
-    ProjectImageURL:
-      "https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/philosophy-free-seo-friendly-website-templates.jpg",
-    ProjectTitle: "Philosophy",
-    ProjectText: `An vel quis vide dissentiet, his omnium laoreet comprehensam an. Te vim nonumy efficiendi. Quidam appellantur has id, no mel nostro intellegat.
-  `,
-    ProjectLink: "https://jose.mulinohouse.co/website-free-template/",
-    ProjectGithub: "https://www.github.com"
-  });
-
   server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
@@ -47,7 +43,7 @@ app.prepare().then(() => {
   });
 
   server.get("/", (req, res) => {
-    return app.render(req, res, "/index", req.query);
+    renderAndCache(req, res, "/");
   });
 
   server.get("/api/webportfolio", (req, res) => {
@@ -55,13 +51,6 @@ app.prepare().then(() => {
       if (err) {
         console.log(err);
       } else res.send(items);
-    });
-  });
-
-  server.get("/api/webportfolio/new", (req, res) => {
-    NewWebProject.save(function(err, NewWebProject) {
-      if (err) return console.log(err);
-      console.log(NewWebProject);
     });
   });
 
@@ -74,3 +63,42 @@ app.prepare().then(() => {
     console.log(`Server is running on ${port}`);
   });
 });
+
+/*
+ * NB: make sure to modify this to take into account anything that should trigger
+ * an immediate page change (e.g a locale stored in req.session)
+ */
+
+function getCacheKey(req) {
+  return `${req.url}`;
+}
+
+async function renderAndCache(req, res, pagePath, queryParams) {
+  const key = getCacheKey(req);
+
+  //If we have a page in the cache, lets serve it
+  if (ssrCache.has(key)) {
+    res.setHeader("x-cache", "HIT");
+    res.send(ssrCache.get(key));
+    return;
+  }
+
+  try {
+    //If not lets render the page into HTML
+    const html = await app.renderToHTML(req, res, pagePath, queryParams);
+
+    // Something is wrong with request, let's skip the cache
+    if (res.statusCode !== 200) {
+      res.send(html);
+      return;
+    }
+
+    // Let's cache this page
+    ssrCache.set(key, html);
+
+    res.setHeader("x-cache", "MISS");
+    res.send(html);
+  } catch (err) {
+    app.renderError(err, req, res, pagePath, queryParams);
+  }
+}
