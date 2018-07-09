@@ -51,6 +51,9 @@ export const ModalTitleLink = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 1rem;
+  @media (max-height: 44rem) {
+    margin: 0.8rem;
+  }
 `;
 
 export const ModalLinkDiv = styled.div`
@@ -67,6 +70,9 @@ export const ModalTitle = styled.h3`
   color: ${props => props.theme.gold};
   font-size: 1.5rem;
   width: 95%;
+  @media (max-height: 44rem) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const ModalText = styled.p`
@@ -74,8 +80,8 @@ export const ModalText = styled.p`
   width: 95%;
   color: white;
   margin-bottom: 1.5rem;
-  @media (max-width: 44rem) {
-    margin-bottom: 0.5rem;
+  @media (max-height: 44rem) {
+    margin-bottom: 0.8rem;
   }
 `;
 
