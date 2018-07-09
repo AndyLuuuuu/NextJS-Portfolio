@@ -74,6 +74,9 @@ export const ModalText = styled.p`
   width: 95%;
   color: white;
   margin-bottom: 1.5rem;
+  @media (max-width: 44rem) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const CloseButton = styled.button`
