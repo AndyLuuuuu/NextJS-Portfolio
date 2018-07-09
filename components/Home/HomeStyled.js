@@ -59,6 +59,9 @@ export const TitleSpan = styled.span`
   @media (max-width: 28rem) {
     font-size: 2.5rem;
   }
+  @media (max-height: 44rem) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const FontChange = styled.span`
@@ -75,6 +78,9 @@ export const FontChange = styled.span`
     font-size: 2.5rem;
   }
   @media (max-width: 28rem) {
+    font-size: 2rem;
+  }
+  @media (max-height: 44rem) {
     font-size: 2rem;
   }
 `;
