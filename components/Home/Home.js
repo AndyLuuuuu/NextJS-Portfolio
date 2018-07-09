@@ -23,12 +23,10 @@ const Home = props => {
           <FontChange>Let's Create Something Amazing</FontChange>
         </Title>
       </TextContainer>
-      <ScrollContainer>
-        <ScrollInstruction
-          onClick={() => About.scrollIntoView({ behavior: "smooth" })}
-        >
-          Let's Begin!
-        </ScrollInstruction>
+      <ScrollContainer
+        onClick={() => About.scrollIntoView({ behavior: "smooth" })}
+      >
+        <ScrollInstruction>Let's Begin!</ScrollInstruction>
         <ScrollInstructionArrow src={WhiteArrow} />
       </ScrollContainer>
     </Background>
