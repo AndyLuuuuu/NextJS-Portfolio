@@ -21,28 +21,102 @@ import GithubIcon from "../../static/icons/github.svg";
 import InstagramIcon from "../../static/icons/instagram.svg";
 import LinkedinIcon from "../../static/icons/linkedin.svg";
 import CloseButton from "../../static/icons/button gold.svg";
+import axios from "axios";
 
 class Contact extends Component {
   state = {
-    Name: "",
-    Email: "",
-    PhoneNumber: "",
-    Message: "",
-    FormComplete: false
+    name: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+    submitComplete: false,
+    submitError: false,
+    inputValidated: false,
+    validationError: false
+  };
+
+  inputValidation = () => {
+    let checks = {
+      name: false,
+      email: false,
+      message: false
+    };
+
+    if (this.state.name === "") {
+      checks.name = false;
+    } else {
+      checks.name = true;
+    }
+
+    if (this.state.email === "") {
+      checks.email = false;
+    } else if (this.state.email.includes("@") === false) {
+      checks.email = false;
+    } else {
+      checks.email = true;
+    }
+
+    if (this.state.message === "" || this.state.message.length < 10) {
+      checks.message = false;
+    } else {
+      checks.message = true;
+    }
+
+    if (checks.name && checks.email && checks.message) {
+      this.setState({ inputValidated: true });
+      setTimeout(() => {
+        this.setState({ inputValidated: false });
+      }, 2000);
+    } else {
+      this.setState({ validationError: true });
+      setTimeout(() => {
+        this.setState({ validationError: false });
+      }, 2000);
+    }
   };
 
   onSubmitHandler = event => {
     event.preventDefault();
-    this.setState({ FormComplete: !this.state.FormComplete });
+    this.inputValidation();
+    let data = {
+      name: this.state.name,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      message: this.state.message
+    };
+    if (this.state.inputValidated) {
+      axios.post("/api/contact", data).then(res => {
+        if (res.status === 200) {
+          this.setState({
+            submitComplete: !this.state.submitComplete,
+            name: "",
+            email: "",
+            phoneNumber: "",
+            message: ""
+          });
+        } else if (res.status === 500) {
+          this.setState({ submitError: true });
+          setTimeout(() => {
+            this.setState({
+              submitError: false,
+              name: "",
+              email: "",
+              phoneNumber: "",
+              message: ""
+            });
+          }, 3000);
+        }
+      });
+    }
   };
 
   onCloseButtonHandler = event => {
     this.setState({
-      Name: "",
-      Email: "",
-      PhoneNumber: "",
-      Message: "",
-      FormComplete: false
+      name: "",
+      email: "",
+      phoneNumber: "",
+      message: "",
+      submitComplete: false
     });
   };
 
@@ -50,22 +124,22 @@ class Contact extends Component {
     switch (event.currentTarget.name) {
       case "name":
         event.persist();
-        this.setState(prevState => ({ Name: event.target.value }));
+        this.setState(prevState => ({ name: event.target.value }));
         console.log(this.state);
         break;
       case "email":
         event.persist();
-        this.setState(prevState => ({ Email: event.target.value }));
+        this.setState(prevState => ({ email: event.target.value }));
         console.log(this.state);
         break;
       case "number":
         event.persist();
-        this.setState(prevState => ({ PhoneNumber: event.target.value }));
+        this.setState(prevState => ({ phoneNumber: event.target.value }));
         console.log(this.state);
         break;
       case "message":
         event.persist();
-        this.setState(prevState => ({ Message: event.target.value }));
+        this.setState(prevState => ({ message: event.target.value }));
         console.log(this.state);
         break;
     }
@@ -90,14 +164,14 @@ class Contact extends Component {
           <ContactForm
             onInputChange={event => this.onInputChangeHandler(event)}
             onSubmit={event => this.onSubmitHandler(event)}
-            flipped={this.state.FormComplete}
+            flipped={this.state.submitComplete}
           />
-          <FormCompletedBack flipped={this.state.FormComplete}>
+          <FormCompletedBack flipped={this.state.submitComplete}>
             <FormCompletedTextContainer>
               <FormCompletedTitle>Hurray!</FormCompletedTitle>
               <FormCompletedText>
-                Thank you for contacting me!<br />I will get back to you as soon
-                as I can!
+                Thank you {this.state.name} for contacting me!<br />I will get
+                back to you as soon as I can!
               </FormCompletedText>
             </FormCompletedTextContainer>
             <FormCompletedButton

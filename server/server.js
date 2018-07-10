@@ -3,6 +3,8 @@ const next = require("next");
 const LRUCache = require("lru-cache");
 const mongoose = require("mongoose");
 const WebPortfolioSchema = require("./schema/WebPortfolioSchema");
+const bodyParser = require("body-parser");
+const transporter = require("./nodemailer/nodemailer");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -33,6 +35,9 @@ app.prepare().then(() => {
     WebPortfolioSchema
   );
 
+  server.use(bodyParser.urlencoded({ extended: false }));
+  server.use(bodyParser.json());
+
   server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
@@ -52,6 +57,30 @@ app.prepare().then(() => {
         console.log(err);
       } else res.send(items);
     });
+  });
+
+  server.post("/api/contact", (req, res) => {
+    var mailOptions = {
+      from: "andylu.nodemailer@gmail.com",
+      to: "yilunglu.andy@gmail.com",
+      subject: "Somebody contacted you through portfolio!",
+      text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nPhone Number: ${
+        req.body.phoneNumber
+      }\nMessage: ${req.body.message}`
+    };
+
+    transporter.sendMail(mailOptions, function(err, res) {
+      if (err) {
+        res.json({ Error: err });
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+      return res.json({
+        message: emailMessage
+      });
+    });
+    return res.end();
   });
 
   server.get("*", (req, res) => {

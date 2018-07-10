@@ -11,6 +11,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: center;
+  backface-visibility: hidden;
   @media (max-width: 87rem) {
     padding: 1.5rem 3rem;
   }
@@ -24,7 +25,7 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const FormContent = styled.form`
+export const FormContent = styled.div`
   display: flex;
   flex-flow: column;
   @media (max-width: 55rem) {
@@ -191,14 +192,15 @@ export const FormButton = styled.button`
   color: ${props => props.theme.gold};
   background-color: transparent;
   transition: all 200ms ease-in-out;
-  &:hover {
-    border-radius: 15px;
-  }
   &:focus {
     outline: none;
   }
   @media (max-width: 55rem) {
     width: 100%;
+  }
+  @media (max-width: 55rem) {
+    background-color: ${props => props.theme.gold};
+    color: ${props => props.theme.black};
   }
 `;
 
