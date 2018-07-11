@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   z-index: 20;
   background-color: ${props =>
@@ -53,17 +53,14 @@ export const ModalText = styled.p`
   @media (max-width: 28rem) {
     font-size: 1.2rem;
   }
-  @media (max-width: 22.5rem) {
+  @media (max-height: 44rem) {
     font-size: 1.2rem;
   }
-  @media (max-height: 44rem) {
-    font-size: 1.5rem;
-  }
   @media (max-height: 40rem) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   @media (max-height: 25rem) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   @media (max-width: 350px) and (max-height: 580px) {
     font-size: 0.9rem;
