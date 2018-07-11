@@ -139,6 +139,7 @@ export const FormTextArea = styled.textarea`
   background-color: transparent;
   border: 2px solid grey;
   font-size: 1rem;
+  margin: 1rem 0;
   color: ${props => props.theme.white};
   &:active {
     outline: none;

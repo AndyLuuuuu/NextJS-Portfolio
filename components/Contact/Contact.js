@@ -65,27 +65,13 @@ class Contact extends Component {
     axios.post("/api/contact", data).then(res => {
       if (res.status === 200) {
         this.setState({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          message: "",
-          submitComplete: !this.state.submitComplete,
-          inputValidated: {
-            name: false,
-            email: false,
-            message: false
-          },
-          validationError: false
+          submitComplete: !this.state.submitComplete
         });
       } else if (res.status === 500) {
         this.setState({ submitError: true });
         setTimeout(() => {
           this.setState({
-            submitError: false,
-            name: "",
-            email: "",
-            phoneNumber: "",
-            message: ""
+            submitError: false
           });
         }, 3000);
       }
@@ -103,7 +89,7 @@ class Contact extends Component {
       email: "",
       phoneNumber: "",
       message: "",
-      submitComplete: false,
+      submitComplete: !this.state.submitComplete,
       inputValidated: {
         name: false,
         email: false,
