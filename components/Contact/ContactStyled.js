@@ -40,6 +40,9 @@ export const Content = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media (max-height: 45rem) {
+    grid-template-rows: 4fr 1fr;
+  }
 `;
 
 export const CTABox = styled.div`
@@ -102,6 +105,9 @@ export const CTATitle = styled.p`
   @media (max-width: 37rem) {
     font-size: 3.5rem;
   }
+  @media (max-height: 44rem) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const CTAText = CTATitle.extend`
@@ -118,6 +124,9 @@ export const CTAText = CTATitle.extend`
   }
   @media (max-width: 37rem) {
     font-size: 1.5rem;
+  }
+  @media (max-height: 45rem) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -144,6 +153,9 @@ export const FollowBox = styled.div`
     box-shadow: none;
     flex-flow: row;
   }
+  @media (max-height: 43rem) {
+    flex-flow: row;
+  }
 `;
 
 export const FollowText = styled.p`
@@ -161,6 +173,9 @@ export const FollowText = styled.p`
   }
   @media (max-width: 31rem) {
     display: none;
+  }
+  @media (max-height: 50rem) {
+    font-size: 1.8rem;
   }
 `;
 
@@ -189,6 +204,10 @@ export const FollowIcon = styled.img`
   @media (max-width: 43rem) {
     width: 2.5rem;
     height: 2.5rem;
+  }
+  @media (max-height: 50rem) {
+    width: 2rem;
+    height: 2rem;
   }
 `;
 

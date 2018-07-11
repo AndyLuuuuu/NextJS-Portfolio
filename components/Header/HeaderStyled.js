@@ -14,4 +14,7 @@ export const LogoImage = styled.img`
   width: 3rem;
   z-index: 21;
   left: 0;
+  @media (max-width: 68rem) {
+    width: 2.5rem;
+  }
 `;

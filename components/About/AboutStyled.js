@@ -7,6 +7,9 @@ export const AboutContainer = styled.section`
   @media (max-width: 25rem) {
     padding: 2rem 0;
   }
+  @media (max-height: 32rem) {
+    height: fit-content;
+  }
 `;
 
 export const Content = styled.div`
@@ -48,6 +51,7 @@ export const AboutImage = styled.img`
     width: 70%;
   }
   @media (max-height: 44rem) {
+    margin-top: 2rem;
     width: 50%;
   }
   @media (max-height: 30rem) {
@@ -155,6 +159,9 @@ export const AboutText = styled.p`
 export const SkillsBox = AboutBox.extend`
   grid-area: 2/4/2/5;
   background-color: ${props => props.theme.gold};
+  @media (max-height: 44rem) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const SkillsTitle = AboutTitle.extend``;

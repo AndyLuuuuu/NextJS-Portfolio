@@ -19,6 +19,7 @@ export const FormContainer = styled.div`
     background-color: initial;
     box-shadow: none;
     transform: none;
+    height: fit-content;
   }
   @media (max-width: 37rem) {
     padding: 1.5rem 0;
@@ -56,26 +57,31 @@ export const FormTitle = styled.h1`
   @media (max-width: 31rem) {
     font-size: 2rem;
   }
-`;
-
-export const FormLabel = styled.label`
-  color: ${props => props.theme.gold};
-  font-size: 1.3rem;
-  @media (max-width: 55rem) {
-    display: none;
+  @media (max-height: 45rem) {
+    font-size: 1.7rem;
   }
 `;
 
-export const FormInput = styled.input.attrs({
-  height: props => props.height || "1rem"
-})`
-  height: ${props => props.height};
+export const FormLabel = styled.label`
+  color: ${props => props.theme.darkGold};
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  @media (max-width: 55rem) and (max-height: 55rem) and (orientation: landscape) {
+    font-size: 0rem;
+  }
+  @media (max-width: 55rem) and (max-height: 55rem) and (orientation: portrait) {
+    font-size: 0rem;
+  }
+`;
+
+export const FormInput = styled.input`
+  width: 100%;
+  height: 2rem;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid grey;
   font-size: 1rem;
   margin-bottom: 1rem;
-  padding-left: 0.5rem;
   color: ${props => props.theme.white};
   &:active {
     outline: none;
@@ -99,6 +105,7 @@ export const FormInput = styled.input.attrs({
     opacity: 0;
   }
   @media (max-width: 55rem) {
+    height: 3rem;
     border: 2px solid ${props => props.theme.darkGold};
     color: ${props => props.theme.black};
     &:focus {
@@ -128,12 +135,10 @@ export const FormInput = styled.input.attrs({
 
 export const FormTextArea = styled.textarea`
   resize: none;
-  height: 10rem;
-  padding: 0.5rem 0 0 0.5rem;
+  height: 8rem;
   background-color: transparent;
   border: 2px solid grey;
   font-size: 1rem;
-  margin: 1rem 0;
   color: ${props => props.theme.white};
   &:active {
     outline: none;
@@ -145,6 +150,7 @@ export const FormTextArea = styled.textarea`
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     opacity: 0; /* Firefox */
+    padding: 0.5rem 0 0 0.5rem;
   }
 
   &:-ms-input-placeholder {
@@ -179,18 +185,24 @@ export const FormTextArea = styled.textarea`
       opacity: 1;
     }
   }
+  @media (max-height: 45rem) {
+    margin: 0.5rem 0;
+    height: 7rem;
+  }
+  @media (max-height: 37.5rem) {
+    height: 4rem;
+  }
 `;
 
 export const FormButton = styled.button`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   width: fit-content;
-  height: 5%;
-  padding: 1rem 3rem;
+  padding: 0.5rem 2rem;
   border: none;
   align-self: center;
-  color: ${props => props.theme.gold};
-  background-color: transparent;
+  background-color: ${props => props.theme.gold};
+  color: ${props => props.theme.black};
   transition: all 200ms ease-in-out;
   &:focus {
     outline: none;
@@ -198,10 +210,14 @@ export const FormButton = styled.button`
   @media (max-width: 55rem) {
     width: 100%;
   }
-  @media (max-width: 55rem) {
-    background-color: ${props => props.theme.gold};
-    color: ${props => props.theme.black};
-  }
+`;
+
+export const FormErrorMessage = styled.p`
+  color: #ef5d6c;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1rem 0;
+  visibility: ${props => (props.validationError ? "visible" : "hidden")};
 `;
 
 export const FormCompletedBack = styled.div`

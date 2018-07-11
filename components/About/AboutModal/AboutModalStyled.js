@@ -18,9 +18,6 @@ export const ModalContainer = styled.div`
   @media (min-width: 1001px) {
     display: none;
   }
-  @media (max-height: 44rem) {
-    height: 100vh;
-  }
 `;
 
 export const ModalTitle = styled.h2`
@@ -40,6 +37,9 @@ export const ModalTitle = styled.h2`
   @media (max-height: 37.5rem) {
     font-size: 1.3rem;
   }
+  @media (max-width: 350px) and (max-height: 580px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const ModalText = styled.p`
@@ -53,19 +53,19 @@ export const ModalText = styled.p`
   @media (max-width: 28rem) {
     font-size: 1.2rem;
   }
-  @media (max-width: 25rem) {
-    font-size: 1.1rem;
-  }
-  @media (max-width: 23rem) {
-    font-size: 1rem;
+  @media (max-width: 22.5rem) {
+    font-size: 1.2rem;
   }
   @media (max-height: 44rem) {
     font-size: 1.5rem;
   }
-  @media (max-height: 37.5rem) {
+  @media (max-height: 40rem) {
     font-size: 1.1rem;
   }
   @media (max-height: 25rem) {
+    font-size: 1rem;
+  }
+  @media (max-width: 350px) and (max-height: 580px) {
     font-size: 0.9rem;
   }
 `;

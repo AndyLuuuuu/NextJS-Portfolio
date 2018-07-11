@@ -20,6 +20,9 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5rem 0;
+  @media (max-height: 44rem) {
+    padding: 2.5rem 0;
+  }
 `;
 
 export const WebPortfolio = styled.div`
@@ -50,6 +53,9 @@ export const Title = styled.h2`
     white-space: nowrap;
     font-size: 2.2rem;
   }
+  @media (max-height: 44rem) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const Subtitle = Title.extend`
@@ -69,6 +75,9 @@ export const Subtitle = Title.extend`
   @media (max-width: 23rem) {
     white-space: nowrap;
     font-size: 1.6rem;
+  }
+  @media (max-height: 44rem) {
+    font-size: 1.7rem;
   }
 `;
 

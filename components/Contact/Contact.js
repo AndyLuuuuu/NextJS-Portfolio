@@ -30,84 +30,71 @@ class Contact extends Component {
     phoneNumber: "",
     message: "",
     submitComplete: false,
-    submitError: false,
-    inputValidated: false,
+    submitError: "Something went wrong!",
+    inputValidated: {
+      name: false,
+      email: false,
+      message: false
+    },
     validationError: false
   };
 
   inputValidation = () => {
-    let checks = {
-      name: false,
-      email: false,
-      message: false
-    };
-
-    if (this.state.name === "") {
-      checks.name = false;
+    if (
+      this.state.inputValidated.name &&
+      this.state.inputValidated.email &&
+      this.state.inputValidated.message
+    ) {
+      this.setState(prevState => ({ validationError: false }));
+      this.submitEmailHandler();
     } else {
-      checks.name = true;
-    }
-
-    if (this.state.email === "") {
-      checks.email = false;
-    } else if (this.state.email.includes("@") === false) {
-      checks.email = false;
-    } else {
-      checks.email = true;
-    }
-
-    if (this.state.message === "" || this.state.message.length < 10) {
-      checks.message = false;
-    } else {
-      checks.message = true;
-    }
-
-    if (checks.name && checks.email && checks.message) {
-      this.setState({ inputValidated: true });
+      this.setState(prevState => ({ validationError: true }));
       setTimeout(() => {
-        this.setState({ inputValidated: false });
-      }, 2000);
-    } else {
-      this.setState({ validationError: true });
-      setTimeout(() => {
-        this.setState({ validationError: false });
-      }, 2000);
+        this.setState(prevState => ({ validationError: false }));
+      }, 3000);
     }
   };
 
-  onSubmitHandler = event => {
-    event.preventDefault();
-    this.inputValidation();
+  submitEmailHandler = () => {
     let data = {
       name: this.state.name,
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       message: this.state.message
     };
-    if (this.state.inputValidated) {
-      axios.post("/api/contact", data).then(res => {
-        if (res.status === 200) {
+    axios.post("/api/contact", data).then(res => {
+      if (res.status === 200) {
+        this.setState({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          message: "",
+          submitComplete: !this.state.submitComplete,
+          inputValidated: {
+            name: false,
+            email: false,
+            message: false
+          },
+          validationError: false
+        });
+      } else if (res.status === 500) {
+        this.setState({ submitError: true });
+        setTimeout(() => {
           this.setState({
-            submitComplete: !this.state.submitComplete,
+            submitError: false,
             name: "",
             email: "",
             phoneNumber: "",
             message: ""
           });
-        } else if (res.status === 500) {
-          this.setState({ submitError: true });
-          setTimeout(() => {
-            this.setState({
-              submitError: false,
-              name: "",
-              email: "",
-              phoneNumber: "",
-              message: ""
-            });
-          }, 3000);
-        }
-      });
-    }
+        }, 3000);
+      }
+    });
+  };
+
+  onSubmitHandler = event => {
+    event.preventDefault();
+    this.inputValidation();
   };
 
   onCloseButtonHandler = event => {
@@ -116,31 +103,60 @@ class Contact extends Component {
       email: "",
       phoneNumber: "",
       message: "",
-      submitComplete: false
+      submitComplete: false,
+      inputValidated: {
+        name: false,
+        email: false,
+        message: false
+      },
+      validationError: false
     });
   };
 
   onInputChangeHandler = event => {
-    switch (event.currentTarget.name) {
+    switch (event.target.name) {
       case "name":
         event.persist();
         this.setState(prevState => ({ name: event.target.value }));
-        console.log(this.state);
+        if (this.state.name.length > 5) {
+          this.setState(prevState => ({
+            inputValidated: {
+              name: true,
+              email: prevState.inputValidated.email,
+              message: prevState.inputValidated.message
+            }
+          }));
+        }
         break;
       case "email":
         event.persist();
         this.setState(prevState => ({ email: event.target.value }));
-        console.log(this.state);
+        if (this.state.email.includes("@")) {
+          this.setState(prevState => ({
+            inputValidated: {
+              name: prevState.inputValidated.name,
+              email: true,
+              message: prevState.inputValidated.message
+            }
+          }));
+        }
         break;
       case "number":
         event.persist();
         this.setState(prevState => ({ phoneNumber: event.target.value }));
-        console.log(this.state);
         break;
       case "message":
         event.persist();
         this.setState(prevState => ({ message: event.target.value }));
-        console.log(this.state);
+        if (this.state.message.length > 20) {
+          this.setState(prevState => ({
+            inputValidated: {
+              name: prevState.inputValidated.name,
+              email: prevState.inputValidated.email,
+              message: true
+            }
+          }));
+        }
         break;
     }
   };
@@ -165,6 +181,9 @@ class Contact extends Component {
             onInputChange={event => this.onInputChangeHandler(event)}
             onSubmit={event => this.onSubmitHandler(event)}
             flipped={this.state.submitComplete}
+            validationError={this.state.validationError}
+            inputValidation={this.state.inputValidated}
+            formValue={this.state}
           />
           <FormCompletedBack flipped={this.state.submitComplete}>
             <FormCompletedTextContainer>

@@ -97,6 +97,9 @@ export const ScrollContainer = styled.div`
   @media (max-height: 25rem) {
     display: none;
   }
+  @media (max-width: 350px) and (max-height: 580px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const ScrollInstruction = styled.p`
@@ -112,7 +115,7 @@ export const ScrollInstruction = styled.p`
     font-size: 1.2rem;
   }
   @media (max-height: 44rem) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   @media (max-height: 37.5rem) {
     font-size: 1.1rem;

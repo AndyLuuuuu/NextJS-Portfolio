@@ -1,12 +1,12 @@
 import React from "react";
 import {
   FormContainer,
-  FormInstruction,
   FormContent,
   FormTitle,
   FormLabel,
   FormInput,
   FormTextArea,
+  FormErrorMessage,
   FormButton
 } from "./ContactFormStyled";
 
@@ -18,30 +18,41 @@ const ContactForm = props => {
         <FormLabel for="name">Full Name:</FormLabel>
         <FormInput
           name="name"
-          height="3rem"
           onChange={event => props.onInputChange(event)}
           placeholder="Your Full Name"
+          nameInputValidation={props.inputValidation.name}
+          value={props.formValue.name}
         />
+
         <FormLabel>Email:</FormLabel>
         <FormInput
           name="email"
-          height="3rem"
           onChange={event => props.onInputChange(event)}
           placeholder="Your Email"
+          emailInputValidation={props.inputValidation.email}
+          value={props.formValue.email}
         />
+
         <FormLabel>Phone Number:</FormLabel>
         <FormInput
           name="number"
           height="3rem"
           onChange={event => props.onInputChange(event)}
-          placeholder="Your Phone Number * Optional"
+          placeholder="Your Phone Number (Optional)"
+          value={props.formValue.phoneNumber}
         />
+
         <FormLabel>Message:</FormLabel>
         <FormTextArea
           name="message"
           onChange={event => props.onInputChange(event)}
           placeholder="Enter Your Message"
+          messageInputValidation={props.inputValidation.message}
+          value={props.formValue.message}
         />
+        <FormErrorMessage validationError={props.validationError}>
+          Please enter correct information.
+        </FormErrorMessage>
         <FormButton onClick={event => props.onSubmit(event)}>Submit</FormButton>
       </FormContent>
     </FormContainer>

@@ -20,6 +20,8 @@ export const MenuHamburger = styled.div`
     background-color: rgba(37, 34, 29, 0.7);
     border-radius: 50%;
     border: 3px solid ${props => props.theme.blue};
+    width: 3rem;
+    height: 3rem;
   }
 `;
 export const MenuText = styled.p`
@@ -47,8 +49,11 @@ export const MenuHamburgerItem = styled.div`
     transform: rotate(${props => (props.showMenu ? "-45deg" : "0deg")});
   }
   @media (max-width: 68rem) {
-    width: 2rem;
+    width: 1.8rem;
     border: 2px solid ${props => props.theme.gold};
+    &:nth-child(2) {
+      margin: 0.3rem 0;
+    }
   }
 `;
 
