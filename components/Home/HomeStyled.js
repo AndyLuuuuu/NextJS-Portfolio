@@ -46,12 +46,12 @@ export const Title = styled.h1`
 export const TitleSpan = styled.span`
   color: ${props => props.theme.gold};
   font-weight: 700;
-  font-size: 6rem;
+  font-size: 5.5rem;
   @media (max-width: 55rem) {
-    font-size: 5rem;
+    font-size: 4rem;
   }
   @media (max-width: 44rem) {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   @media (max-width: 37.5rem) {
     font-size: 3rem;
