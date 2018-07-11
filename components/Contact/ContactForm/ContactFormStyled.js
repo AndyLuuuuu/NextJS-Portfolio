@@ -194,11 +194,22 @@ export const FormTextArea = styled.textarea`
   }
 `;
 
+export const FormMessageButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  @media (max-width: 55rem) {
+    flex-flow: column;
+    justify-content: center;
+    margin-top: 0rem;
+  }
+`;
+
 export const FormButton = styled.button`
   font-size: 1.1rem;
   font-weight: 700;
-  width: fit-content;
-  padding: 0.5rem 2rem;
+  padding: 1rem 4rem;
   border: none;
   align-self: center;
   background-color: ${props => props.theme.gold};

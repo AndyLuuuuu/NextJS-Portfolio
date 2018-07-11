@@ -6,6 +6,7 @@ import {
   FormLabel,
   FormInput,
   FormTextArea,
+  FormMessageButtonContainer,
   FormErrorMessage,
   FormButton
 } from "./ContactFormStyled";
@@ -15,6 +16,7 @@ const ContactForm = props => {
     <FormContainer flipped={props.flipped}>
       <FormTitle>I'd love to hear from you!</FormTitle>
       <FormContent>
+        {console.log(props.inputValidation.name)}
         <FormLabel for="name">Full Name:</FormLabel>
         <FormInput
           name="name"
@@ -22,6 +24,7 @@ const ContactForm = props => {
           placeholder="Your Full Name"
           nameInputValidation={props.inputValidation.name}
           value={props.formValue.name}
+          validation={props.inputValidation.name}
         />
 
         <FormLabel>Email:</FormLabel>
@@ -31,6 +34,7 @@ const ContactForm = props => {
           placeholder="Your Email"
           emailInputValidation={props.inputValidation.email}
           value={props.formValue.email}
+          validation={props.inputValidation.email}
         />
 
         <FormLabel>Phone Number:</FormLabel>
@@ -49,11 +53,14 @@ const ContactForm = props => {
           placeholder="Enter Your Message"
           messageInputValidation={props.inputValidation.message}
           value={props.formValue.message}
+          validation={props.inputValidation.message}
         />
-        <FormErrorMessage validationError={props.validationError}>
-          Please enter correct information.
-        </FormErrorMessage>
-        <FormButton onClick={event => props.onSubmit(event)}>Submit</FormButton>
+        <FormMessageButtonContainer>
+          <FormErrorMessage validationError={props.validationError}>
+            Please enter correct information.
+          </FormErrorMessage>
+          <FormButton onClick={event => props.onSubmit(event)}>Send</FormButton>
+        </FormMessageButtonContainer>
       </FormContent>
     </FormContainer>
   );
