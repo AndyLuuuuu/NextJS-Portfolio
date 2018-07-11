@@ -18,6 +18,3 @@ coverage
 # test output
 test/**/out
 .DS_Store
-
-# Gmail-Nodemailer Config
-server/nodemailer/nodemailer.js
