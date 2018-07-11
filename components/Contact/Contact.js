@@ -168,7 +168,6 @@ class Contact extends Component {
             onSubmit={event => this.onSubmitHandler(event)}
             flipped={this.state.submitComplete}
             validationError={this.state.validationError}
-            inputValidation={this.state.inputValidated}
             formValue={this.state}
           />
           <FormCompletedBack flipped={this.state.submitComplete}>

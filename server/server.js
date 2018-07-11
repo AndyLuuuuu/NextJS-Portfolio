@@ -3,8 +3,6 @@ const next = require("next");
 const LRUCache = require("lru-cache");
 const mongoose = require("mongoose");
 const WebPortfolioSchema = require("./schema/WebPortfolioSchema");
-const favicon = require("serve-favicon");
-const path = require("path");
 const bodyParser = require("body-parser");
 const transporter = require("./nodemailer/nodemailer");
 
@@ -39,7 +37,6 @@ app.prepare().then(() => {
 
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
-  server.use(favicon(path.join(__dirname, "../static/favicon.ico")));
 
   server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
