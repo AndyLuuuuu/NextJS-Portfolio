@@ -134,7 +134,7 @@ class Contact extends Component {
       case "message":
         event.persist();
         this.setState(prevState => ({ message: event.target.value }));
-        if (this.state.message.length > 20) {
+        if (this.state.message.length > 10) {
           this.setState(prevState => ({
             inputValidated: {
               name: prevState.inputValidated.name,
