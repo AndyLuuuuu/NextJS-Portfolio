@@ -63,7 +63,7 @@ app.prepare().then(() => {
     var mailOptions = {
       from: "andylu.nodemailer@gmail.com",
       to: "yilunglu.andy@gmail.com",
-      subject: "Somebody contacted you through portfolio!",
+      subject: `${req.body.name} - Contacted Through Portfolio`,
       text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nPhone Number: ${
         req.body.phoneNumber
       }\nMessage: ${req.body.message}`
