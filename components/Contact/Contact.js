@@ -33,25 +33,17 @@ class Contact extends Component {
     submitError: "Something went wrong!",
     inputValidated: {
       name: false,
-      email: false,
-      message: false
+      email: false
     },
     validationError: false
   };
 
   inputValidation = () => {
-    if (
-      this.state.inputValidated.name &&
-      this.state.inputValidated.email &&
-      this.state.inputValidated.message
-    ) {
+    if (this.state.inputValidated.name && this.state.inputValidated.email) {
       this.setState(prevState => ({ validationError: false }));
       this.submitEmailHandler();
     } else {
       this.setState(prevState => ({ validationError: true }));
-      setTimeout(() => {
-        this.setState(prevState => ({ validationError: false }));
-      }, 3000);
     }
   };
 
@@ -92,8 +84,7 @@ class Contact extends Component {
       submitComplete: !this.state.submitComplete,
       inputValidated: {
         name: false,
-        email: false,
-        message: false
+        email: false
       },
       validationError: false
     });
@@ -104,12 +95,18 @@ class Contact extends Component {
       case "name":
         event.persist();
         this.setState(prevState => ({ name: event.target.value }));
-        if (this.state.name.length >= 3) {
+        if (event.target.value.length >= 3) {
           this.setState(prevState => ({
             inputValidated: {
               name: true,
-              email: prevState.inputValidated.email,
-              message: prevState.inputValidated.message
+              email: prevState.inputValidated.email
+            }
+          }));
+        } else {
+          this.setState(prevState => ({
+            inputValidated: {
+              name: false,
+              email: prevState.inputValidated.email
             }
           }));
         }
@@ -117,12 +114,21 @@ class Contact extends Component {
       case "email":
         event.persist();
         this.setState(prevState => ({ email: event.target.value }));
-        if (this.state.email.includes("@")) {
+        if (
+          event.target.value.includes("@") &&
+          event.target.value.length >= 5
+        ) {
           this.setState(prevState => ({
             inputValidated: {
               name: prevState.inputValidated.name,
-              email: true,
-              message: prevState.inputValidated.message
+              email: true
+            }
+          }));
+        } else {
+          this.setState(prevState => ({
+            inputValidated: {
+              name: prevState.inputValidated.name,
+              email: false
             }
           }));
         }
@@ -134,15 +140,6 @@ class Contact extends Component {
       case "message":
         event.persist();
         this.setState(prevState => ({ message: event.target.value }));
-        if (this.state.message.length > 10) {
-          this.setState(prevState => ({
-            inputValidated: {
-              name: prevState.inputValidated.name,
-              email: prevState.inputValidated.email,
-              message: true
-            }
-          }));
-        }
         break;
     }
   };
@@ -168,6 +165,7 @@ class Contact extends Component {
             onSubmit={event => this.onSubmitHandler(event)}
             flipped={this.state.submitComplete}
             validationError={this.state.validationError}
+            inputValidation={this.state.inputValidated}
             formValue={this.state}
           />
           <FormCompletedBack flipped={this.state.submitComplete}>

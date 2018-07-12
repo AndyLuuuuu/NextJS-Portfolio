@@ -50,7 +50,9 @@ const ContactForm = props => {
         />
         <FormMessageButtonContainer>
           <FormErrorMessage validationError={props.validationError}>
-            Please enter correct information.
+            Please check following fields:
+            {props.inputValidation.name ? null : " [Name] "}
+            {props.inputValidation.email ? null : " [Email] "}
           </FormErrorMessage>
           <FormButton onClick={event => props.onSubmit(event)}>Send</FormButton>
         </FormMessageButtonContainer>
