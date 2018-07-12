@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const WebPortfolioSchema = require("./schema/WebPortfolioSchema");
 const bodyParser = require("body-parser");
 const transporter = require("./nodemailer/nodemailer");
+const sslRedirect = require("heroku-ssl-redirect");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -37,6 +38,7 @@ app.prepare().then(() => {
 
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
+  server.use(sslRedirect());
 
   server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
