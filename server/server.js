@@ -21,7 +21,7 @@ const ssrCache = new LRUCache({
 
 app.prepare().then(() => {
   const server = express();
-  // Connect to MongoDB
+  // Connect to Mongo DB
   mongoose
     .connect(
       db,
