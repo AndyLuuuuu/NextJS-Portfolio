@@ -18,3 +18,7 @@ coverage
 # test output
 test/**/out
 .DS_Store
+
+# Updating on Heroku - Exclude line
+# Updating on GitHub - Include line
+./server/nodemailer/nodemailer.js
