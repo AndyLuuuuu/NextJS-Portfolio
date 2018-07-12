@@ -73,6 +73,7 @@ export const AboutBox = styled.div`
   justify-content: space-between;
   padding: 1rem;
   transition: all 150ms ease-in-out;
+  cursor: pointer;
   &:hover {
     transform: scale(1.05);
     box-shadow: 3px 3px 5px #a9a9a9;
@@ -210,6 +211,7 @@ export const CTABtn = styled.a`
   margin: 0rem auto;
   margin-top: 2rem;
   transition: all 100ms ease-in-out;
+  cursor: pointer;
   &:hover {
     background-color: ${props => props.theme.gold};
     color: ${props => props.theme.black};
@@ -232,6 +234,7 @@ export const AboutExpand = styled.div`
   justify-content: center;
   padding: 5rem 5rem;
   overflow-y: auto;
+  position: relative;
   @media (max-width: 81rem) {
     padding: 1rem;
   }

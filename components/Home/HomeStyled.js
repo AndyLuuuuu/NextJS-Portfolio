@@ -90,6 +90,7 @@ export const ScrollContainer = styled.div`
   position: absolute;
   bottom: 2%;
   transition: all 150ms ease-in-out;
+  cursor: pointer;
   &:hover {
     animation: ${pulse} 750ms linear infinite;
     animation-direction: alternate-reverse;

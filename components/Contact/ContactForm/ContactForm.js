@@ -54,7 +54,14 @@ const ContactForm = props => {
             {props.inputValidation.name ? null : " [Name] "}
             {props.inputValidation.email ? null : " [Email] "}
           </FormErrorMessage>
-          <FormButton onClick={event => props.onSubmit(event)}>Send</FormButton>
+          <FormButton
+            disabled={
+              !props.inputValidation.name && !props.inputValidation.email
+            }
+            onClick={event => props.onSubmit(event)}
+          >
+            Send
+          </FormButton>
         </FormMessageButtonContainer>
       </FormContent>
     </FormContainer>

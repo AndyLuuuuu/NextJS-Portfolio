@@ -213,9 +213,10 @@ export const FormButton = styled.button`
   padding: 1rem 4rem;
   border: none;
   align-self: center;
-  background-color: ${props => props.theme.gold};
+  background-color: ${props => (props.disabled ? "grey" : "#E1CFAA")};
   color: ${props => props.theme.black};
   transition: all 200ms ease-in-out;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
