@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "express-sitemap-html": "^1.0.3",
     "heroku-ssl-redirect": "0.0.4",
     "isomorphic-unfetch": "^2.0.0",
     "lru-cache": "^4.1.3",
