@@ -21,4 +21,5 @@ test/**/out
 
 # Updating on Heroku - Exclude line
 # Updating on GitHub - Include line
-server/nodemailer/nodemailer.js
+server/nodemailer
+server/config
