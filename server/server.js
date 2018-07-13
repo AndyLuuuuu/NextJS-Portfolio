@@ -6,7 +6,7 @@ const WebPortfolioSchema = require("./schema/WebPortfolioSchema");
 const bodyParser = require("body-parser");
 const transporter = require("./nodemailer/nodemailer");
 const sslRedirect = require("heroku-ssl-redirect");
-const sitemap = require("express-sitemap-html");
+const sitemap = require("express-sitemap");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -86,7 +86,16 @@ app.prepare().then(() => {
     return res.end();
   });
 
-  server.get("/sitemap", sitemap(server));
+  // Sitemap Generate
+  let map = sitemap({ generate: server });
+
+  server
+    .get("/sitemap.xml", (req, res) => {
+      map.XMLtoWeb(res);
+    })
+    .get("/robots.txt", (req, res) => {
+      map.TXTtoWeb(res);
+    });
 
   server.get("*", (req, res) => {
     return handle(req, res);
