@@ -184,7 +184,7 @@ class Contact extends Component {
           <FollowBox>
             <FollowText>Follow Me</FollowText>
             <FollowIconContainer>
-              <a href="https://www.linkedin.com" target="_blank">
+              <a href="https://www.linkedin.com/in/lu-andy/" target="_blank">
                 <FollowIcon src={LinkedinIcon} alt="LinkedIn" />
               </a>
               <a href="https://www.instagram.com/andy.luuuuu/" target="_blank">
