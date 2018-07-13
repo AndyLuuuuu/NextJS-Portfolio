@@ -87,7 +87,14 @@ app.prepare().then(() => {
   });
 
   // Sitemap Generate
-  let map = sitemap({ generate: server });
+  let map = sitemap({
+    http: "https",
+    url: "www.andylu.me",
+    map: {
+      "/api/webportfolio": ["get"],
+      "/api/contact": ["post"]
+    }
+  });
 
   server
     .get("/sitemap.xml", (req, res) => {
