@@ -28,13 +28,6 @@ export const TextContainer = styled.div`
   text-align: center;
 `;
 
-export const LogoImage = styled.img`
-  width: 10rem;
-  height: 10rem;
-  padding: 0.5rem;
-  border: 8px solid white;
-`;
-
 export const Title = styled.h1`
   color: ${props => props.theme.black};
   font-weight: 300;
