@@ -42,7 +42,7 @@ index.getInitialProps = async function() {
     "https://nextjs-portfolio.herokuapp.com/api/webportfolio"
   );
   return {
-    WebPortfolioData: res.data
+    WebPortfolioData: res.data.reverse()
   };
 };
 
